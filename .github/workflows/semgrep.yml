@@ -26,7 +26,7 @@ jobs:
       #- run: python /src/semgrep-json-to-sarif.py --json /src/semgrep-findings.json --sarif /src/semgrep-sarif.sarif
       - run: which semgrep
       - run: pwd
-      - run: ls -l / /src /__e /__t /__w /usr/local/ /usr/local/bin
+      - run: ls -l /__w /usr/local/bin /usr/local/bin/pysemgrep
       #- run: semgrep ci --sarif > semgrep.sarif
 
       #- name: Upload SARIF file for GitHub Advanced Security Dashboard
