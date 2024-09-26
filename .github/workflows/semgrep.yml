@@ -20,13 +20,13 @@ jobs:
     container:
       image: semgrep/semgrep
       volumes:
-        - /src:/$(HOME)/semgrep-tools
+        - /src:$(HOME)/semgrep-tools
         
     if: (github.actor != 'dependabot[bot]')
     steps:
       #- uses: actions/checkout@v4
       #- run: semgrep ci --output semgrep-findings.json --json
-      - run: ls -l /semgrep-tools
+      - run: ls -l $(HOME)/semgrep-tools
 
      # - name: Checkout Security for semgrep script
       #  uses: actions/checkout@v4
