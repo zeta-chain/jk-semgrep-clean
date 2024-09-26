@@ -30,6 +30,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: zeta-chain/semgrep-utilities
+          path: semgrep-utilities
 
       - run: ls -al
 
