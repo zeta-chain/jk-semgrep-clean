@@ -32,7 +32,7 @@ jobs:
           repository: zeta-chain/semgrep-utilities
           path: semgrep-utilities
 
-      - run: ls -al
+      - run: ls -al semgrep-utilities/utilities/github-sarif-helper/
 
       #- run: python semgrep-json-to-sarif.py --help
           
