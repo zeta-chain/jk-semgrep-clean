@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v4
       #- run: semgrep ci --output /src/semgrep-findings.json --json
       #- run: python /src/semgrep-json-to-sarif.py --json /src/semgrep-findings.json --sarif /src/semgrep-sarif.sarif
-      - run: ls -al /src
+      - run: which semgrep
       - run: ls -l
       #- run: semgrep ci --sarif > semgrep.sarif
 
