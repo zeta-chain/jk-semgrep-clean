@@ -29,7 +29,7 @@ jobs:
         with:
           repository: zeta-chain/semgrep-utilities
 
-      - run: python semgrep-json-to-sarif.py --help
+      #- run: python semgrep-json-to-sarif.py --help
       - run: ls -l /usr/local/bin
       - run: semgrep-json-to-sarif.py
           
