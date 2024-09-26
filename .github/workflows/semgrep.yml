@@ -19,27 +19,26 @@ jobs:
       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
     container:
       image: semgrep/semgrep
-      volumes:
-        - /src:$(HOME)/semgrep-tools/
         
     if: (github.actor != 'dependabot[bot]')
     steps:
-      #- uses: actions/checkout@v4
+      
+      - uses: actions/checkout@v4
       #- run: semgrep ci --output semgrep-findings.json --json
-      - run: echo $(HOME)
-      - run: ls -l $(HOME)/semgrep-tools/
 
-     # - name: Checkout Security for semgrep script
-      #  uses: actions/checkout@v4
-       # with:
-        #  repository: zeta-chain/semgrep-utilities
+      - name: Checkout Security for semgrep script
+        uses: actions/checkout@v4
+        with:
+          repository: zeta-chain/semgrep-utilities
+
+      - run: ls -al
 
       #- run: python semgrep-json-to-sarif.py --help
           
       #- run: curl -o semgrep-json-to-sarif.py https://raw.githubusercontent.com/r2c-CSE/semgrep-utilities/refs/heads/main/utilities/github-sarif-helper/src/semgrep-json-to-sarif.py
       #- run: python semgrep-json-to-sarif.py --json semgrep-findings.json --sarif semgrep-github.sarif
 
-      - name: Upload SARIF file for GitHub Advanced Security Dashboard
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: semgrep-github.sarif
+     # - name: Upload SARIF file for GitHub Advanced Security Dashboard
+      #  uses: github/codeql-action/upload-sarif@v3
+       # with:
+        #  sarif_file: semgrep-github.sarif
