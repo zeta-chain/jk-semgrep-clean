@@ -22,9 +22,18 @@ jobs:
     if: (github.actor != 'dependabot[bot]')
     steps:
       - uses: actions/checkout@v4
-      - run: semgrep ci --output semgrep-findings.json --json
-      - run: curl -o semgrep-json-to-sarif.py https://raw.githubusercontent.com/r2c-CSE/semgrep-utilities/refs/heads/main/utilities/github-sarif-helper/src/semgrep-json-to-sarif.py
-      - run: python semgrep-json-to-sarif.py --json semgrep-findings.json --sarif semgrep-github.sarif
+      #- run: semgrep ci --output semgrep-findings.json --json
+
+      - name: Checkout Security for semgrep script
+        uses: actions/checkout@v4
+        with:
+          repository: zeta-chain/security
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: python semgrep/semgrep-json-to-sarif.py --help
+          
+      #- run: curl -o semgrep-json-to-sarif.py https://raw.githubusercontent.com/r2c-CSE/semgrep-utilities/refs/heads/main/utilities/github-sarif-helper/src/semgrep-json-to-sarif.py
+      #- run: python semgrep-json-to-sarif.py --json semgrep-findings.json --sarif semgrep-github.sarif
 
       - name: Upload SARIF file for GitHub Advanced Security Dashboard
         uses: github/codeql-action/upload-sarif@v3
