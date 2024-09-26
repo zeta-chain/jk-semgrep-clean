@@ -21,7 +21,7 @@ jobs:
       image: semgrep/semgrep
     if: (github.actor != 'dependabot[bot]')
     steps:
-      - uses: actions/checkout@v4
+      #- uses: actions/checkout@v4
       #- run: semgrep ci --output semgrep-findings.json --json
 
       - name: Checkout Security for semgrep script
